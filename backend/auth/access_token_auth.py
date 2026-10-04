@@ -1,4 +1,5 @@
 import requests
+import logging
 from core.configs_core import BATTLE_NET_CLIENT_ID, BATTLE_NET_CLIENT_SECRET
 
 
@@ -8,10 +9,12 @@ def get_access_token():
         data={"grant_type": "client_credentials"},
         auth=(BATTLE_NET_CLIENT_ID, BATTLE_NET_CLIENT_SECRET))
     request_header = {"Authorization": f"Bearer {token_response.json()['access_token']}"}
-    # request_param = token_response.json()['access_token']
-    return request_header
 
-    # if param == 0:
-    #     return request_header
-    # else:
-    #     return request_param
+    logging.info(
+        "POST %s | status=%s | tempo=%.2fs",
+        token_response.url,
+        token_response.status_code,
+        token_response.elapsed.total_seconds()
+    )
+
+    return request_header

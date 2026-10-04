@@ -16,7 +16,4 @@ __pycache__/
 Thumbs.db
 
 self_note.txt
-AuctionsList.json
-visualizer_one_line.json
-visualizer.json
-CommoditiesList.json
+*.json
